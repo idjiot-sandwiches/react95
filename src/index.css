@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+:root {
+  --bg-color: #55AAAA;
+}
+
+#root {
+  background-color: var(--bg-color);
+  min-height: 100vh;
+}
