@@ -15,7 +15,7 @@ function DesktopIcon({ id, text, icon, show, open }: Props) {
   const handleRestore = () => {
     if (!show) {
       open();
-      return; 
+      return;
     }
     
     add({

@@ -1,10 +1,10 @@
-import { Frame, Modal, TitleBar, useModal } from "@react95/core";
 import type { ReactElement } from "react";
+import { List, Modal, TitleBar, useModal } from "@react95/core";
 
 interface Props extends React.PropsWithChildren {
-  id: string,
-  text: string,
-  icon: ReactElement,
+  id: string;
+  text: string;
+  icon: ReactElement;
 }
 
 function ModalContent({ id, text, icon, children }: Props) {
@@ -23,22 +23,34 @@ function ModalContent({ id, text, icon, children }: Props) {
         title={text}
         dragOptions={{
           defaultPosition: {
-            x: 50,
-            y: 100,
+            x: window.innerWidth * Math.random() * (0.2 - 0.1 + 0.1),
+            y: window.innerHeight * Math.random() * (0.2 - 0.1 + 0.1),
           },
         }}
-        titleBarOptions={[<Modal.Minimize key="minimize" />, <TitleBar.Close key="close" onClick={handleClose} />]}
+        titleBarOptions={[
+          <Modal.Minimize key="minimize" />,
+          <TitleBar.Close key="close" onClick={handleClose} />,
+        ]}
+        menu={[
+          {
+            name: "F\u0332ile",
+            list: (
+              <List width="200px">
+                <List.Item onClick={handleClose}>Exit</List.Item>
+              </List>
+            ),
+          },
+          {
+            name: "H\u0332elp",
+            list: (
+              <List width="200px">
+                <List.Item onClick={handleClose}>Exit</List.Item>
+              </List>
+            )
+          }
+        ]}
       >
-        <Modal.Content width="350px" boxShadow="$in" bgColor="white" p="16px">
-          <Frame
-            as="div"
-            display="flex"
-            flexDirection="column"
-            gap="8px"
-          >
-            {children}
-          </Frame>
-        </Modal.Content>
+        {children}
       </Modal>
     </>
   );
