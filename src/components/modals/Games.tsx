@@ -6,6 +6,7 @@ import ALPreview from "../../assets/preview/ALPreview.webp";
 import WTPreview from "../../assets/preview/WTPreview.webp";
 import HSRPreview from "../../assets/preview/HSRPreview.webp";
 import UmaPreview from "../../assets/preview/UmaPreview.webp";
+import GTAOPreview from "../../assets/preview/GTAOPreview.webp";
 import HonkaiStarRail from "../../assets/icon/HonkaiStarRail.webp";
 import { useState } from "react";
 import { Frame } from "@react95/core";
@@ -33,7 +34,7 @@ function Games() {
     gtao: {
       icon: GTAO,
       name: "GTA Online",
-      img: "",
+      img: GTAOPreview,
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, perspiciatis. Doloribus quas nisi, excepturi esse laudantium quibusdam nemo explicabo corporis vitae, provident error cumque praesentium sed molestias rerum quia nobis.",
     },
     uma: {
