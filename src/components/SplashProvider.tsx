@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
 
 const SplashContext = createContext({
   showSplash: () => {},
@@ -10,6 +10,7 @@ interface Props extends React.PropsWithChildren {}
 
 export const SplashProvider = ({ children }: Props) => {
   const [isShown, setIsShown] = useState(true);
+  const audioRef = useRef(new Audio('./audio/startup.ogg'));
 
   const applyRootBackground = useCallback(() => {
     const match = document.cookie.match(
@@ -27,6 +28,8 @@ export const SplashProvider = ({ children }: Props) => {
   useEffect(() => {
     if (isShown) {
       applyRootBackground();
+      audioRef.current.volume = 0.2;
+      audioRef.current.play();
     }
   }, [isShown, applyRootBackground]);
 

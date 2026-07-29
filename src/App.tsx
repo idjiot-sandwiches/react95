@@ -10,6 +10,8 @@ const sleep = (ms = 1000) => new Promise((resolve) => setTimeout(resolve, ms));
 
 function App() {
   const { hideSplash, isShown } = useSplash();
+
+  const [show, setShow] = useState(false);
   const [windows, setWindows] = useState<Windows>([
     {
       id: "about",
@@ -59,19 +61,23 @@ function App() {
   };
 
   const handleOpen = (id: string) => handleModal(id, true);
-  
   useEffect(() => {
     (async () => {
-      await sleep(2000);
+      await sleep(3000);
       hideSplash();
+
+      const timer = setTimeout(() => setShow(true), 1500);
+      return () => clearTimeout(timer);
     })();
   }, []);
 
   return isShown ? null : (
     <>
-      <Taskbar windows={windows} handleOpen={handleOpen} />
-      <Desktop windows={windows} handleOpen={handleOpen} />
-      <ModalList windows={windows} />
+      {show && <>
+        <Taskbar windows={windows} handleOpen={handleOpen} />
+        <Desktop windows={windows} handleOpen={handleOpen} />
+        <ModalList windows={windows} />
+      </>}
     </>
   );
 }
