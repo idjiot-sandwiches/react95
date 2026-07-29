@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSplash } from "./components/SplashProvider";
 import { FilePencil, Gcdef100, Mplayer10, Settings } from "@react95/icons";
 import type { Windows } from "./type/type";
 import Desktop from "./components/Desktop";
 import Taskbar from "./components/Taskbar";
 import ModalList from "./components/ModalList";
 
+const sleep = (ms = 1000) => new Promise((resolve) => setTimeout(resolve, ms));
+
 function App() {
+  const { hideSplash, isShown } = useSplash();
   const [windows, setWindows] = useState<Windows>([
     {
       id: "about",
@@ -55,8 +59,15 @@ function App() {
   };
 
   const handleOpen = (id: string) => handleModal(id, true);
+  
+  useEffect(() => {
+    (async () => {
+      await sleep(2000);
+      hideSplash();
+    })();
+  }, []);
 
-  return (
+  return isShown ? null : (
     <>
       <Taskbar windows={windows} handleOpen={handleOpen} />
       <Desktop windows={windows} handleOpen={handleOpen} />

@@ -1,6 +1,6 @@
+import { useState } from "react";
 import { Frame } from "@react95/core";
 import { Computer4 } from "@react95/icons";
-import { useState } from "react";
 import Wallpaper from "../settings/Wallpaper";
 
 function Setting() {

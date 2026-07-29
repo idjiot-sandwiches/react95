@@ -23,9 +23,9 @@ function Wallpaper() {
     }
 
     if (active === "default") {
-      document.documentElement.style.backgroundImage = "";
+      root.style.backgroundImage = "";
     } else {
-      document.documentElement.style.backgroundImage = `url(${active})`;
+      root.style.backgroundImage = `url(${active})`;
     }
 
     document.cookie = `wallpaper=${active};`;
