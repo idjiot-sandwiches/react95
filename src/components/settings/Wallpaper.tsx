@@ -7,6 +7,7 @@ function Wallpaper() {
     "/wallpaper/static/konosuba.webp",
     "/wallpaper/static/miku.webp",
     "/wallpaper/static/recreator.webp",
+    "/wallpaper/static/yuuki-yuuna.webp",
   ];
 
   const [active, setActive] = useState<string>(() => {

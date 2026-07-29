@@ -4,14 +4,6 @@
   --bg-color: #55AAAA;
 }
 
-/* html {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: var(--bg-color);
-  min-height: 100vh;
-} */
-
 #root {
   background-size: cover;
   background-position: center;
