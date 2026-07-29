@@ -11,28 +11,28 @@ interface Props extends React.PropsWithChildren {
 
 function ModalContent({ id, text, icon, desc, children }: Props) {
   const { add, restore, focus, minimize, remove } = useModal();
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(false);
 
   const handleClose = (id: string) => {
     minimize(id);
     remove(id);
   };
 
-  const handleRestore = (id: string) => {
-    if (!show) {
-      setShow(true);
-      return;
-    }
+  // const handleRestore = (id: string) => {
+  //   if (!show) {
+  //     setShow(true);
+  //     return;
+  //   }
 
-    add({
-      id: id,
-      title: text,
-      icon: icon,
-      hasButton: true,
-    });
-    restore(id);
-    focus(id);
-  };
+  //   add({
+  //     id: id,
+  //     title: text,
+  //     icon: icon,
+  //     hasButton: true,
+  //   });
+  //   restore(id);
+  //   focus(id);
+  // };
 
   return (
     <>
@@ -91,7 +91,7 @@ function ModalContent({ id, text, icon, desc, children }: Props) {
             name: "H\u0332elp",
             list: (
               <List width="200px">
-                <List.Item onClick={() => handleRestore(id + "-help")}>
+                <List.Item>
                   About
                 </List.Item>
               </List>

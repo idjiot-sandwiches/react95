@@ -4,6 +4,7 @@ type WindowItem = {
   icon: React.ReactElement;
   desc?: string;
   show: boolean;
+  taskbar: boolean;
 };
 
 export type Windows = WindowItem[];
