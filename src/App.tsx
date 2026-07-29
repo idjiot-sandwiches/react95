@@ -11,18 +11,21 @@ function App() {
       id: "settings",
       text: "Settings",
       icon: <Settings variant="32x32_4" />,
+      desc: 'Lorem ipsum dolor sit, ',
       show: false,
     },
     {
       id: "anime",
       text: "Anime List",
       icon: <Mplayer10 variant="32x32_4" />,
+      desc: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse hic quia, porro deserunt, molestiae nisi consequuntur natus obcaecati quo, est cum nostrum doloribus. Repudiandae fugiat sequi ratione aperiam laborum est?',
       show: false,
     },
     {
       id: "games",
       text: "Games",
       icon: <Gcdef100 variant="32x32_4" />,
+      desc: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse hic quia, porro deserunt, molestiae nisi consequuntur natus obcaecati quo, est cum nostrum doloribus. Repudiandae fugiat sequi ratione aperiam laborum est?',
       show: false,
     },
   ]);
