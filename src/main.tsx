@@ -5,12 +5,12 @@ import './index.css'
 import '@react95/icons/icons.css';
 import '@react95/core/GlobalStyle';
 import '@react95/core/themes/win95.css';
-import { SplashProvider } from './components/SplashProvider.tsx';
+import Provider from './components/boot/Provider.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <SplashProvider>
+    <Provider>
       <App />
-    </SplashProvider>
+    </Provider>
   </StrictMode>,
 )

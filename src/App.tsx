@@ -1,23 +1,17 @@
-import { useEffect, useState } from "react";
-import { useSplash } from "./components/SplashProvider";
+import { useState } from "react";
 import { FilePencil, Gcdef100, Mplayer10, Settings } from "@react95/icons";
 import type { Windows } from "./type/type";
 import Desktop from "./components/Desktop";
 import Taskbar from "./components/Taskbar";
 import ModalList from "./components/ModalList";
 
-const sleep = (ms = 1000) => new Promise((resolve) => setTimeout(resolve, ms));
-
 function App() {
-  const { hideSplash, isShown } = useSplash();
-
-  const [show, setShow] = useState(false);
   const [windows, setWindows] = useState<Windows>([
     {
       id: "about",
       text: "About Me",
-      icon: <FilePencil variant="32x32_4"/>,
-      desc: 'Lorem ipsum dolor sit, ',
+      icon: <FilePencil variant="32x32_4" />,
+      desc: "Lorem ipsum dolor sit, ",
       show: true,
       taskbar: true,
     },
@@ -25,7 +19,7 @@ function App() {
       id: "settings",
       text: "Settings",
       icon: <Settings variant="32x32_4" />,
-      desc: 'Lorem ipsum dolor sit, ',
+      desc: "Lorem ipsum dolor sit, ",
       show: false,
       taskbar: true,
     },
@@ -33,7 +27,7 @@ function App() {
       id: "anime",
       text: "Anime List",
       icon: <Mplayer10 variant="32x32_4" />,
-      desc: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse hic quia, porro deserunt, molestiae nisi consequuntur natus obcaecati quo, est cum nostrum doloribus. Repudiandae fugiat sequi ratione aperiam laborum est?',
+      desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse hic quia, porro deserunt, molestiae nisi consequuntur natus obcaecati quo, est cum nostrum doloribus. Repudiandae fugiat sequi ratione aperiam laborum est?",
       show: false,
       taskbar: false,
     },
@@ -41,7 +35,7 @@ function App() {
       id: "games",
       text: "Games",
       icon: <Gcdef100 variant="32x32_4" />,
-      desc: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse hic quia, porro deserunt, molestiae nisi consequuntur natus obcaecati quo, est cum nostrum doloribus. Repudiandae fugiat sequi ratione aperiam laborum est?',
+      desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse hic quia, porro deserunt, molestiae nisi consequuntur natus obcaecati quo, est cum nostrum doloribus. Repudiandae fugiat sequi ratione aperiam laborum est?",
       show: false,
       taskbar: false,
     },
@@ -61,23 +55,12 @@ function App() {
   };
 
   const handleOpen = (id: string) => handleModal(id, true);
-  useEffect(() => {
-    (async () => {
-      await sleep(3000);
-      hideSplash();
 
-      const timer = setTimeout(() => setShow(true), 1500);
-      return () => clearTimeout(timer);
-    })();
-  }, []);
-
-  return isShown ? null : (
+  return (
     <>
-      {show && <>
-        <Taskbar windows={windows} handleOpen={handleOpen} />
-        <Desktop windows={windows} handleOpen={handleOpen} />
-        <ModalList windows={windows} />
-      </>}
+      <Taskbar windows={windows} handleOpen={handleOpen} />
+      <Desktop windows={windows} handleOpen={handleOpen} />
+      <ModalList windows={windows} />
     </>
   );
 }
