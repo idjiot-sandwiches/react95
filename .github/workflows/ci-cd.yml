@@ -1,0 +1,63 @@
+name: Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7 # v7.0.0
+
+      - name: Login Container Registry
+        run: |
+          echo "${{ secrets.REGISTRY_PASSWORD }}" \
+          | docker login zot.idjiot-sandwiches.my.id \
+          -u "${{ secrets.REGISTRY_USERNAME }}" \
+          --password-stdin
+
+      - name: Set Env Variable
+        run: |
+          echo "IMAGE_OWNER=$(echo '${{ github.repository_owner }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+          echo "REGISTRY=zot.idjiot-sandwiches.my.id" >> $GITHUB_ENV
+
+      - name: Build image
+        run: |
+          docker build \
+            -f Dockerfile \
+            -t ${{ env.REGISTRY }}/${{ env.IMAGE_OWNER }}/react95:latest \
+            .
+
+      - name: Push images
+        run: |
+          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_OWNER }}/react95:latest
+
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@v3
+
+      - name: Sign image
+        env:
+          COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
+          COSIGN_KEY: ${{ secrets.COSIGN_KEY }}
+        run: |
+          cosign sign \
+            --key env://COSIGN_KEY \
+            ${{ env.REGISTRY }}/${{ env.IMAGE_OWNER }}/react95:latest
+
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: Deploy server
+        run: |
+          mkdir -p /home/idjiot/apps/react95
+          cd /home/idjiot/apps/react95
+
+          docker compose pull
+          docker compose up -d
+
+          docker image prune -a -f
+          docker builder prune -f
