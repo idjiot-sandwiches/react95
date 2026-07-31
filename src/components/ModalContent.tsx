@@ -1,6 +1,6 @@
-import { useState, type ReactElement } from "react";
-import { Alert, List, Modal, TitleBar, useModal } from "@react95/core";
-import { Awfxex32Info } from "@react95/icons";
+import { type ReactElement } from "react";
+import { List, Modal, TitleBar, useModal } from "@react95/core";
+// import { Awfxex32Info } from "@react95/icons";
 
 interface Props extends React.PropsWithChildren {
   id: string;
@@ -9,8 +9,8 @@ interface Props extends React.PropsWithChildren {
   desc?: string;
 }
 
-function ModalContent({ id, text, icon, desc, children }: Props) {
-  const { add, restore, focus, minimize, remove } = useModal();
+function ModalContent({ id, text, icon, children }: Props) {
+  const { minimize, remove } = useModal();
   // const [show, setShow] = useState(false);
 
   const handleClose = (id: string) => {
