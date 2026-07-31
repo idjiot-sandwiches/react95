@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --bg-color: #55AAAA;
+  --bg-color: #55aaaa;
 }
 
 #root {
@@ -11,3 +11,12 @@
   background-color: var(--bg-color);
   min-height: 100vh;
 }
+
+@keyframes shimmer-right {
+    0% {
+      transform: translateX(0%); /* Starts off-screen left (-100%) */
+    }
+    100% {
+      transform: translateX(200%); /* Moves all the way off-screen right */
+    }
+  }

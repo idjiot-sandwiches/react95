@@ -43,7 +43,7 @@ function Provider({ children }: Props) {
 
   useEffect(() => {
     (async () => {
-      await sleep(3000);
+      await sleep(3500);
       setSplash(false);
     })();
   }, [boot]);
@@ -61,10 +61,10 @@ function Provider({ children }: Props) {
       ) : null}
 
       {splash ? (
-        <div className="absolute w-full h-full flex justify-center items-center z-50 bg-black">
-          <span className="text-center text-4xl text-white">
-            This is a splash screen
-          </span>
+        <div className="absolute w-full h-full flex z-50 bg-black bg-[url(/wallpaper/static/react95.webp)] bg-contain bg-center bg-no-repeat">
+          <div className="absolute bottom-0 h-6 w-full overflow-hidden bg-gray-200">
+            <div className="absolute inset-y-0 -left-full w-full bg-linear-to-r from-transparent via-blue-700/75 to-transparent animate-[shimmer-right_2.5s_linear_infinite]"></div>
+          </div>
         </div>
       ) : null}
 
