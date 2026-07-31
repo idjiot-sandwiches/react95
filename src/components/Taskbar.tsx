@@ -71,7 +71,10 @@ function Taskbar({ windows, handleOpen }: Props) {
                 ),
             )}
             <List.Divider />
-            <List.Item icon={<Computer3 variant="32x32_4" />}>
+            <List.Item
+              icon={<Computer3 variant="32x32_4" />}
+              onClick={() => window.location.href = 'https://idjiot-sandwiches.my.id/'}
+            >
               Shut Down...
             </List.Item>
           </List>

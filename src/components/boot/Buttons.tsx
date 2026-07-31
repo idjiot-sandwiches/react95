@@ -83,7 +83,7 @@ function Buttons({
               ${isActive ? "bg-white text-slate-900" : "text-white"}
             `}
           >
-            {label}
+            {"> " + label}
           </button>
         );
       })}

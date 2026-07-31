@@ -1,5 +1,5 @@
 import { createContext, useEffect, useRef, useState } from "react";
-import Buttons from "./Buttons";
+import Screen from "./Screen";
 
 interface Props extends React.PropsWithChildren {}
 
@@ -56,7 +56,7 @@ function Provider({ children }: Props) {
     >
       {boot ? (
         <div className="absolute w-full h-full flex z-50 bg-black">
-          <Buttons onChange={onChange} />
+          <Screen onChange={onChange} />
         </div>
       ) : null}
 
