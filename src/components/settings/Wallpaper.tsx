@@ -23,7 +23,7 @@ function Wallpaper() {
       return;
     }
 
-    if (active === "default") {
+    if (!active || active === "default") {
       root.style.backgroundImage = "";
       root.style.backgroundColor = `var(--bg-color)`;
     } else {
