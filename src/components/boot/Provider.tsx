@@ -22,8 +22,14 @@ function Provider({ children }: Props) {
     const wallpaper = match ? decodeURIComponent(match[2]) : "";
     const root = document.getElementById("root");
 
-    if (root) {
-      root.style.backgroundImage = wallpaper ? `url("${wallpaper}")` : "";
+    if (!root) {
+      return;
+    }
+
+    if (wallpaper === 'default') {
+      root.style.backgroundColor = `var(--bg-color)`;
+    } else {
+      root.style.backgroundImage = `url("${wallpaper}")`;
     }
   };
 

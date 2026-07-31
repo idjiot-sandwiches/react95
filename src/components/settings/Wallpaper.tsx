@@ -25,6 +25,7 @@ function Wallpaper() {
 
     if (active === "default") {
       root.style.backgroundImage = "";
+      root.style.backgroundColor = `var(--bg-color)`;
     } else {
       root.style.backgroundImage = `url(${active})`;
     }
