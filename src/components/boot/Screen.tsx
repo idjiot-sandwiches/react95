@@ -14,6 +14,7 @@ function Screen({ onChange }: Props) {
         <div className="h-6"></div>
         <Buttons onChange={onChange} />
         <div className="h-6"></div>
+        <div>Press ENTER to continue</div>
         <div>For more information, please visit: <a href={link} target="_blank" className="text-blue-500!">{link}</a></div>
       </div>
     </>
