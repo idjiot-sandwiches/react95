@@ -1,37 +1,66 @@
-import { Frame, Modal, TaskBar } from "@react95/core";
-import { Mmsys113, Settings } from "@react95/icons";
-import DesktopIcon from "./components/DesktopIcon";
+import { useState } from "react";
+import { FilePencil, Gcdef100, Mplayer10, Settings } from "@react95/icons";
+import type { Windows } from "./type/type";
+import Desktop from "./components/Desktop";
+import Taskbar from "./components/Taskbar";
+import ModalList from "./components/ModalList";
 
 function App() {
+  const [windows, setWindows] = useState<Windows>([
+    {
+      id: "about",
+      text: "About Me",
+      icon: <FilePencil variant="32x32_4" />,
+      desc: "Lorem ipsum dolor sit, ",
+      show: true,
+      taskbar: true,
+    },
+    {
+      id: "settings",
+      text: "Settings",
+      icon: <Settings variant="32x32_4" />,
+      desc: "Lorem ipsum dolor sit, ",
+      show: false,
+      taskbar: true,
+    },
+    {
+      id: "anime",
+      text: "Anime List",
+      icon: <Mplayer10 variant="32x32_4" />,
+      desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse hic quia, porro deserunt, molestiae nisi consequuntur natus obcaecati quo, est cum nostrum doloribus. Repudiandae fugiat sequi ratione aperiam laborum est?",
+      show: false,
+      taskbar: false,
+    },
+    {
+      id: "games",
+      text: "Games",
+      icon: <Gcdef100 variant="32x32_4" />,
+      desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse hic quia, porro deserunt, molestiae nisi consequuntur natus obcaecati quo, est cum nostrum doloribus. Repudiandae fugiat sequi ratione aperiam laborum est?",
+      show: false,
+      taskbar: false,
+    },
+  ]);
+
+  const handleModal = (id: string, show: boolean) => {
+    setWindows((prev) =>
+      prev.map((window) =>
+        window.id === id
+          ? {
+              ...window,
+              show,
+            }
+          : window,
+      ),
+    );
+  };
+
+  const handleOpen = (id: string) => handleModal(id, true);
+
   return (
     <>
-      <TaskBar />
-
-      <div>
-        <DesktopIcon text="Settings">
-          <Settings variant="32x32_4" />
-        </DesktopIcon>
-      </div>
-
-      <Modal
-        id="first-modal"
-        icon={<Mmsys113 variant="32x32_4" />}
-        title="First Modal"
-        dragOptions={{
-          defaultPosition: {
-            x: 50,
-            y: 100,
-          },
-        }}
-        titleBarOptions={<Modal.Minimize />}
-        
-      >
-        <Modal.Content width="350px" boxShadow="$in" bgColor="white" p="16px">
-          <Frame as="div" display="flex" flexDirection="column" gap="8px">
-
-          </Frame>
-        </Modal.Content>
-      </Modal>
+      <Taskbar windows={windows} handleOpen={handleOpen} />
+      <Desktop windows={windows} handleOpen={handleOpen} />
+      <ModalList windows={windows} />
     </>
   );
 }

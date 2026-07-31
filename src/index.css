@@ -1,10 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --bg-color: #55AAAA;
+  --bg-color: #55aaaa;
 }
 
 #root {
-  background-color: var(--bg-color);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #000;
   min-height: 100vh;
 }
+
+@keyframes shimmer-right {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(200%);
+    }
+  }
