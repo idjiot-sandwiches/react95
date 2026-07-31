@@ -26,7 +26,7 @@ function Provider({ children }: Props) {
       return;
     }
 
-    if (wallpaper === 'default') {
+    if (!wallpaper || wallpaper === 'default') {
       root.style.backgroundColor = `var(--bg-color)`;
     } else {
       root.style.backgroundImage = `url("${wallpaper}")`;
