@@ -4,6 +4,7 @@ import ModalContent from "./ModalContent";
 import Anime from "./modals/Anime";
 import Games from "./modals/Games";
 import Setting from "./modals/Setting";
+import About from "./modals/About";
 
 interface Props {
   windows: Windows;
@@ -16,6 +17,7 @@ function ModalList({ windows }: Props) {
     settings: <Setting />,
     anime: <Anime />,
     games: <Games />,
+    about: <About />,
   };
 
   return (
