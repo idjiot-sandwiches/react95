@@ -9,7 +9,7 @@ import UmaPreview from "../../assets/preview/UmaPreview.webp";
 import GTAOPreview from "../../assets/preview/GTAOPreview.webp";
 import HonkaiStarRail from "../../assets/icon/HonkaiStarRail.webp";
 import { useState } from "react";
-import { Frame } from "@react95/core";
+import { Button, Frame } from "@react95/core";
 
 function Games() {
   const games: Record<string, any> = {
@@ -17,31 +17,26 @@ function Games() {
       icon: HonkaiStarRail,
       name: "Honkai Star Rail",
       img: HSRPreview,
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, perspiciatis. Doloribus quas nisi, excepturi esse laudantium quibusdam nemo explicabo corporis vitae, provident error cumque praesentium sed molestias rerum quia nobis.",
     },
     wt: {
       icon: WarThunder,
       name: "War Thunder",
       img: WTPreview,
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, perspiciatis. Doloribus quas nisi, excepturi esse laudantium quibusdam nemo explicabo corporis vitae, provident error cumque praesentium sed molestias rerum quia nobis.",
     },
     al: {
       icon: AzurLane,
       name: "Azur Lane",
       img: ALPreview,
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, perspiciatis. Doloribus quas nisi, excepturi esse laudantium quibusdam nemo explicabo corporis vitae, provident error cumque praesentium sed molestias rerum quia nobis.",
     },
     gtao: {
       icon: GTAO,
       name: "GTA Online",
       img: GTAOPreview,
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, perspiciatis. Doloribus quas nisi, excepturi esse laudantium quibusdam nemo explicabo corporis vitae, provident error cumque praesentium sed molestias rerum quia nobis.",
     },
     uma: {
       icon: Umamusume,
       name: "Umamusume: Pretty Derby",
       img: UmaPreview,
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, perspiciatis. Doloribus quas nisi, excepturi esse laudantium quibusdam nemo explicabo corporis vitae, provident error cumque praesentium sed molestias rerum quia nobis.",
     },
   };
 
@@ -49,16 +44,19 @@ function Games() {
 
   return (
     <>
-      <div className="flex pt-1 w-137.5 h-125">
+      <div className="flex pt-1 w-[600px] h-[450px]">
         <Frame
-          w="70%"
+          w="60%"
           h="100%"
           bgColor="$material"
           boxShadow="$in"
           padding="$2"
         >
+          <Frame h="10%">
+            <Button w="100%" h="100%">Games I have played.</Button>
+          </Frame>
           <Frame
-            h="100%"
+            h="90%"
             bgColor="white"
             overflow="auto"
             padding="$4"
@@ -94,7 +92,6 @@ function Games() {
                   {games[active].name}
                 </h2>
                 <img src={games[active].img} alt={games[active].name} />
-                <p>{games[active].desc}</p>
               </>
             )}
           </Frame>
