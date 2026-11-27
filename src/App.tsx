@@ -9,7 +9,7 @@ function App() {
   const [windows, setWindows] = useState<Windows>([
     {
       id: "about",
-      text: "About Me",
+      text: "About",
       icon: <FilePencil variant="32x32_4" />,
       desc: "Lorem ipsum dolor sit, ",
       show: true,
