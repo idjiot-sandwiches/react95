@@ -14,6 +14,7 @@ function Wallpaper() {
     const match = document.cookie.match(
       new RegExp("(^| )" + "wallpaper" + "=([^;]+)"),
     );
+
     return match ? decodeURIComponent(match[2]) : "";
   });
 
@@ -47,7 +48,7 @@ function Wallpaper() {
         <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
           Preview
         </h4>
-        {active === "default" ? (
+        {!active || active === "default" ? (
           <div className="h-64 w-full bg-[#55AAAA]"></div>
         ) : (
           <img src={active} alt={active} />
